@@ -1,0 +1,21 @@
+<div class="container" id="fullheight">
+<form #assignForm="ngForm" (submit)="GetDetail(assignForm)">
+
+      <div class="card my-4 mx-auto">
+        <div class="card-body">
+          <mat-form-field class="w-100">
+          <mat-label>Choose Employee</mat-label>
+          <mat-select  name="employee" #employee="ngModel" required ngModel>
+              <mat-option *ngFor="let employee of employees" [value]="employee">
+                  {{employee?.name}} ({{employee?.position}})
+              </mat-option>
+          </mat-select>
+        </mat-form-field>
+          <p><button mat-raised-button color="primary" type="submit">Get Details</button></p>
+          </div>
+      </div>
+
+
+
+</form>
+</div>

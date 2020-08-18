@@ -1,0 +1,26 @@
+<div class="container py-2 px-4" id="fullheight">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <h1 class="text-right">Shifts</h1>
+  <hr>
+
+    <table class="table table-hover" *ngIf="shifts.length > 0 && !isLoading">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Emp. Name</th>
+          <th>Designation</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of shifts">
+          <td>{{ employee?.id }}</td>
+          <td>{{ employee?.title }}</td>
+          <td>{{ employee?.position }}</td>
+          <td class="text-primary">{{ employee?.date }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p *ngIf="shifts.length <= 0 && !isLoading">No Employees added yet!</p>

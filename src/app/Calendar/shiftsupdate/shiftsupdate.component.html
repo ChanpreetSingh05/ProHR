@@ -1,0 +1,36 @@
+<div class="container py-2 px-4" id="fullheight">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<h1>Shifts</h1>
+<hr>
+
+<div class="container my-4 ml-auto w-100" *ngIf="!isLoading">
+  <input class="form-control" [(ngModel)]="search" [ngModelOptions]="{standalone:true}" placeholder="Search by Employee Name">
+</div>
+
+<div class="container"  id="fullheight">
+  <!-- <input type="text" [(ngModel)]="title" (input)="Search()"> -->
+  <table class="table table-hover" *ngIf="shifts.length > 0 && !isLoading">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Emp. Name</th>
+        <th>Date</th>
+        <th>Designation</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of shifts | shiftsname: search">
+        <td>{{ employee?._id }}</td>
+        <td>{{ employee?.title }}</td>
+        <td>{{ employee?.date }}</td>
+        <td>{{ employee?.position }}</td>
+        <td>
+          <i class="fas fa-trash-alt mx-4 text-danger" (click)="onDelete(employee?._id)"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p *ngIf="shifts.length <= 0 && !isLoading">No Shifts added yet!</p>
+</div>

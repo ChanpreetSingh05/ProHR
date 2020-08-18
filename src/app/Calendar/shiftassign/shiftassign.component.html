@@ -1,0 +1,12 @@
+<form #assignForm="ngForm" (submit)="onSubmit(assignForm)">
+<mat-form-field>
+  <mat-label>Choose Employee</mat-label>
+  <mat-select name="employee" #employee="ngModel" required ngModel>
+    <mat-option *ngFor="let employee of employees" [value]="employee">
+      {{employee?.name}} ({{employee?.position}})
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-raised-button color="accent" type="submit">Assign</button>
+</form>

@@ -1,0 +1,54 @@
+<div class="container" id= "fullheight">
+    <form #createForm="ngForm" (submit)="Submit(createForm)" *ngIf="boolsel">
+        <div class="form-group">
+            <label for="email">Email ID:</label>
+            <input [ngModel]="selected?.email" class="form-control" type="email" name="email" #email="ngModel" disabled
+                required>
+        </div>
+
+        <div class="form-group">
+            <label for="pass">Assign a Password:</label>
+            <input [ngModel]="" class="form-control" id="pass" name="pass" #pass="ngModel" required>
+        </div>
+
+        <div class="checkbox">
+            <label for="admin">
+                <input [ngModel]="admin" type="checkbox" name="admin" #admin="ngModel" checked="false">Is the Person Admin..?</label>
+        </div>
+        <button mat-raised-button color="accent" type="submit">Activate Account</button>
+    </form>
+
+    <form #assignForm="ngForm" (submit)="GetDetail(assignForm)">
+      <div class="card my-4 mx-auto">
+        <div class="card-body">
+          <mat-form-field class="w-100">
+          <mat-label>Choose Employee</mat-label>
+          <mat-select name="employee" #employee="ngModel" required ngModel>
+            <mat-option *ngFor="let employee of employees" [value]="employee">
+                {{employee?.name}} ({{employee?.position}})
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+          <p><button mat-raised-button color="primary" type="submit">Get Details</button></p>
+          </div>
+      </div>
+    </form>
+
+    <div class="container-fluid row mb-5" *ngIf="boolsel">
+
+        <div class="col-lg-6 col-md-6 col-12 ">
+            <p class="card-text my-4">Name : {{selected?.name}}</p>
+            <p class="card-text my-4">Email ID : {{selected?.email}}</p>
+            <p class="card-text my-4">Contact Number : {{selected?.phone}}</p>
+            <p class="card-text my-4">Address : {{selected?.address}}</p>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12 ">
+            <p class="card-text my-4">Designation : {{selected?.position}}</p>
+            <p class="card-text my-4">D.O.B. : {{selected?.dob}}</p>
+            <p class="card-text my-4">Joining Date : {{selected?.hiring}}</p>
+            <p class="card-text my-4">Gender : {{selected?.gender}}</p>
+        </div>
+    </div>
+</div>

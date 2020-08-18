@@ -1,0 +1,18 @@
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+mat-form-field,mat-radio-group ,mat-radio-button  {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+img{
+  width: 30%;
+}

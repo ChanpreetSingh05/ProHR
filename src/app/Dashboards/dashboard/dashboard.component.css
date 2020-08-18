@@ -1,0 +1,15 @@
+
+mat-drawer {
+    width: 280px;
+    background-color: #3f6fb5;
+    color: antiquewhite;
+  }
+
+  mat-drawer-container {
+    height: 100%;
+  }
+
+  mat-drawer-content {
+    padding: 20px;
+    height: 100%;
+  }

@@ -1,0 +1,26 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<h1>Time Off Request History</h1>
+<hr>
+<div class="container"  id="fullheight">
+  <!-- <input type="text" [(ngModel)]="title" (input)="Search()"> -->
+  <table class="table table-hover" *ngIf="timeoffs.length > 0 && !isLoading">
+    <thead>
+      <tr>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeoff of timeoffs">
+        <td>{{ timeoff?.from }}</td>
+        <td>{{ timeoff?.to }}</td>
+        <td>{{ timeoff?.reason }}</td>
+        <td>{{ timeoff?.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p *ngIf="timeoffs.length <= 0 && !isLoading">No Time Off Requests!</p>

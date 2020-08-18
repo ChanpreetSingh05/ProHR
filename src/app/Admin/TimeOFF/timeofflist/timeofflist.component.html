@@ -1,0 +1,71 @@
+<mat-tab-group>
+  <mat-tab label="Pending">
+    <div *ngIf="timeoffs.length > 0 && !isLoading">
+      <div class="card my-4 mx-auto" *ngFor="let timeoff of timeoffs">
+        <div class="card-body">
+
+          <h1>Name: <span class="text-primary">{{ timeoff?.name }}</span></h1>
+          <p>From: {{ timeoff?.from }}</p>
+          <p>To: {{ timeoff?.to }}</p>
+          <p>Reason: <span class="text-danger">{{ timeoff?.reason }}</span></p>
+
+          <mat-action-row *ngIf="userIsAuthenticated && userisAdmin">
+            <button mat-raised-button color="primary" class="mx-2" (click)="onAccept(timeoff._id,timeoff.userid)">Accept</button>
+            <button mat-raised-button color="warn" class="mx-2" (click)="onDelete(timeoff._id,timeoff.userid)">Reject</button>
+          </mat-action-row>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card my-4 mx-auto" *ngIf="timeoffs.length <= 0 && !isLoading">
+      <div class="card-body">
+        <p class="info-text mat-body-1 text-center my-2">No Pending Requests!
+        </p>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab class="text-primary" label="Accepted">
+    <div *ngIf="accept.length > 0 && !isLoading">
+      <div class="card my-4 mx-auto" *ngFor="let timeoff of accept">
+        <div class="card-body">
+
+          <h1>Name: <span class="text-primary">{{ timeoff?.name }}</span></h1>
+          <p>From: {{ timeoff?.from }}</p>
+          <p>To: {{ timeoff?.to }}</p>
+          <p>Reason: <span class="text-warning">{{ timeoff?.reason }}</span></p>
+          <p>Status: <span class="text-success">Accepted</span></p>
+
+        </div>
+      </div>
+    </div>
+    <div class="card my-4 mx-auto" *ngIf="accept.length <= 0 && !isLoading">
+      <div class="card-body">
+        <p class="info-text mat-body-1 text-center my-2">No Accepted Requests!
+        </p>
+      </div>
+    </div>
+
+  </mat-tab>
+  <mat-tab class="text-danger" label="Declined">
+    <div *ngIf="refused.length > 0 && !isLoading">
+      <div class="card my-4 mx-auto" *ngFor="let timeoff of refused">
+        <div class="card-body">
+
+          <h1>Name: <span class="text-primary">{{ timeoff?.name }}</span></h1>
+          <p>From: {{ timeoff?.from }}</p>
+          <p>To: {{ timeoff?.to }}</p>
+          <p>Reason: <span class="text-warning">{{ timeoff?.reason }}</span></p>
+          <p>Status: <span class="text-danger">Declined</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="card my-4 mx-auto" *ngIf="refused.length <= 0 && !isLoading">
+      <div class="card-body">
+        <p class="info-text mat-body-1 text-center my-2">No Declined Requests!
+        </p>
+      </div>
+    </div>
+
+  </mat-tab>
+</mat-tab-group>

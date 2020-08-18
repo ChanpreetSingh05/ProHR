@@ -1,0 +1,38 @@
+<div class="container mt-4 py-2 px-4">
+  <mat-card class="mt-4 mx-auto p-4 w-50 ">
+    <form #timeForm="ngForm" (submit)="onSubmit(timeForm)">
+      <mat-form-field class="mx-auto">
+        <input [ngModel]="emp?.name" matInput type="text" name="name" #name="ngModel" disabled required ngModel>
+        <mat-error *ngIf="reason.invalid && reason.touched">Reason is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput [matDatepicker]="picker" (focus)="picker.open()" placeholder="From Date" name="from"
+          #from="ngModel" [min]="minDate" ngModel required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+        <mat-error *ngIf="from.invalid && from.touched">From Date is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input [ngModel]="emp?.name" matInput [matDatepicker]="picker1" (focus)="picker1.open()" placeholder="To Date" name="to" #to="ngModel"
+          ngModel required [min]="from.value">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker1></mat-datepicker>
+        <mat-error *ngIf="to.invalid && to.touched">To Date is required.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="mx-auto">
+        <input matInput type="text" name="reason" #reason="ngModel" required placeholder="Enter the Reason" ngModel>
+        <mat-error *ngIf="reason.invalid && reason.touched">Reason is required</mat-error>
+      </mat-form-field>
+      <div class="text-center">
+        <button class="btn btn-warning w-75 my-4" color="accent" type="submit">Submit</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
+<div class="container mt-5 pt-4">
+  <router-outlet></router-outlet>
+</div>

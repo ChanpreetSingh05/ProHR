@@ -1,0 +1,45 @@
+<!-- <mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+      <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+      <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Login</button>
+  </form>
+</mat-card> -->
+
+<div class="wrapper fadeInDown p-5">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <div id="formContent" class="m-5" *ngIf="!isLoading">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first p-4">
+      <img src="https://growingsmilestx.com/wp-content/uploads/2019/04/206855.png" class="img-fluid" id="icon" alt="User Icon" />
+    </div>
+
+    <!-- Login Form -->
+    <form (submit)="onLogin(loginForm)" class="p-5" #loginForm="ngForm">
+      <mat-form-field>
+        <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+        <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+        <mat-error *ngIf="passwordInput.invalid">Please enter a valid password.</mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="mb-2" color="primary" type="submit" *ngIf="!isLoading">Login</button>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <!-- <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div> -->
+
+  </div>
+</div>

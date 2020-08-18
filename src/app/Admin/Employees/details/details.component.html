@@ -1,0 +1,36 @@
+<div class="container py-2 px-4">
+    <h1 class="text-right"> Details </h1>
+    <hr>
+
+    <div class="container-fluid row mb-5">
+        <div class="col-lg-4 col-md-4 col-12">
+            <img [src]="emp?.imagePath" alt="emp?.title" class="rounded-circle img-thumbnail">
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-12 ">
+            <p class="card-text my-4">Name : </p>
+            <p class="card-text my-4">Email ID : </p>
+            <p class="card-text my-4">Contact Number :</p>
+            <p class="card-text my-4">Address : </p>
+            <p class="card-text my-4">Designation :</p>
+            <p class="card-text my-4">D.O.B. : </p>
+            <p class="card-text my-4">Joining Date :</p>
+            <p class="card-text my-4">Gender : </p>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-12 ">
+            <p class="card-text my-4">{{emp?.name}}</p>
+            <p class="card-text my-4">{{emp?.email}}</p>
+            <p class="card-text my-4">{{emp?.phone}}</p>
+            <p class="card-text my-4">{{emp?.address}}</p>
+            <p class="card-text my-4">{{emp?.position}}</p>
+            <p class="card-text my-4">{{emp?.dob}}</p>
+            <p class="card-text my-4">{{emp?.hiring}}</p>
+            <p class="card-text my-4">{{emp?.gender}}</p>
+        </div>
+        <div class="ml-auto" *ngIf="userisAdmin">
+            <button type="button" class="btn btn-primary" [routerLink]="['/admin/create', emp?._id  || 'all' ]">Edit</button>
+            <button type="button" class="btn btn-danger mx-2 my-3" (click)="onDelete(emp?._id)">Delete</button>
+        </div>
+    </div>
+</div>
